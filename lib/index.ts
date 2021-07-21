@@ -1,14 +1,31 @@
-import * as cdk from '@aws-cdk/core';
+import * as cdk from '@aws-cdk/core'
+import * as s3 from '@aws-cdk/aws-s3'
+import * as s3deploy from '@aws-cdk/aws-s3-deployment'
+import { packageOpenapi } from './utils'
+import * as path from 'path'
 
 export interface AwsOpenapiUiProps {
-  // Define construct properties here
+  openapiPath: string
 }
 
 export class AwsOpenapiUi extends cdk.Construct {
-
-  constructor(scope: cdk.Construct, id: string, props: AwsOpenapiUiProps = {}) {
+  constructor(scope: cdk.Construct, id: string, props: AwsOpenapiUiProps) {
     super(scope, id);
+    const swaggerUiPath = __dirname + '/swagger-ui'
 
-    // Define construct contents here
+    const swagger = swaggerUiPath + '/swagger.json'
+    packageOpenapi(props.openapiPath, swagger)
+
+    const apiDocBucket = new s3.Bucket(this, `openapi`, {
+      websiteIndexDocument: 'index.html',
+      publicReadAccess: true,
+      accessControl: s3.BucketAccessControl.PUBLIC_READ,
+      removalPolicy: cdk.RemovalPolicy.DESTROY
+    })
+
+    const bucket = new s3deploy.BucketDeployment(this, 'swagger-ui', {
+      sources: [s3deploy.Source.asset(swaggerUiPath)],
+      destinationBucket: apiDocBucket
+    })
   }
 }
