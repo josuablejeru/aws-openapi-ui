@@ -20,12 +20,14 @@ export class AwsOpenapiUi extends cdk.Construct {
       websiteIndexDocument: 'index.html',
       publicReadAccess: true,
       accessControl: s3.BucketAccessControl.PUBLIC_READ,
-      removalPolicy: cdk.RemovalPolicy.DESTROY
+      removalPolicy: cdk.RemovalPolicy.DESTROY,
+      autoDeleteObjects: true,
     })
 
-    const bucket = new s3deploy.BucketDeployment(this, 'swagger-ui', {
+    new s3deploy.BucketDeployment(this, 'swagger-ui', {
       sources: [s3deploy.Source.asset(swaggerUiPath)],
       destinationBucket: apiDocBucket
     })
+    console.log("swagger docs", apiDocBucket.bucketWebsiteUrl)
   }
 }
