@@ -1,25 +1,36 @@
 {
   "name": "aws-openapi-ui",
   "version": "0.1.0",
-  "main": "lib/index.js",
-  "types": "lib/index.d.ts",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "scripts": {
-    "build": "tsc",
-    "watch": "tsc -w",
-    "test": "jest"
+    "build": "webpack",
+    "watch": "tsc -w"
   },
   "devDependencies": {
     "@aws-cdk/assert": "1.114.0",
     "@types/jest": "^26.0.10",
+    "@types/jszip": "^3.4.1",
     "@types/node": "10.17.27",
-    "jest": "^26.4.2",
-    "ts-jest": "^26.2.0",
-    "typescript": "~3.9.7"
+    "@types/swagger-ui": "^3.47.1",
+    "copy-webpack-plugin": "^9.0.1",
+    "node-polyfill-webpack-plugin": "^1.1.4",
+    "ts-loader": "^9.2.3",
+    "typescript": "~3.9.7",
+    "webpack": "^5.45.1",
+    "webpack-cli": "^4.7.2",
+    "webpack-node-externals": "^3.0.0"
   },
   "peerDependencies": {
     "@aws-cdk/core": "1.114.0"
   },
   "dependencies": {
-    "@aws-cdk/core": "1.114.0"
-  }
+    "@aws-cdk/aws-s3": "1.114.0",
+    "@aws-cdk/aws-s3-deployment": "1.114.0",
+    "@aws-cdk/core": "1.114.0",
+    "jszip": "^3.6.0"
+  },
+  "files": [
+    "dist"
+  ]
 }
