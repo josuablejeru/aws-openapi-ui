@@ -8,7 +8,7 @@
     "watch": "tsc -w"
   },
   "devDependencies": {
-    "@aws-cdk/assert": "1.114.0",
+    "@aws-cdk/assert": "1.108.0",
     "@types/jest": "^26.0.10",
     "@types/jszip": "^3.4.1",
     "@types/node": "10.17.27",
@@ -22,12 +22,12 @@
     "webpack-node-externals": "^3.0.0"
   },
   "peerDependencies": {
-    "@aws-cdk/core": "1.114.0"
+    "@aws-cdk/core": "1.108.0"
   },
   "dependencies": {
-    "@aws-cdk/aws-s3": "1.114.0",
-    "@aws-cdk/aws-s3-deployment": "1.114.0",
-    "@aws-cdk/core": "1.114.0",
+    "@aws-cdk/aws-s3": "1.108.0",
+    "@aws-cdk/aws-s3-deployment": "1.108.0",
+    "@aws-cdk/core": "1.108.0",
     "jszip": "^3.6.0"
   },
   "files": [
