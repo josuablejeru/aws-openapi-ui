@@ -2,7 +2,6 @@ import * as cdk from '@aws-cdk/core'
 import * as s3 from '@aws-cdk/aws-s3'
 import * as s3deploy from '@aws-cdk/aws-s3-deployment'
 import { packageOpenapi } from './utils'
-import * as path from 'path'
 
 export interface AwsOpenapiUiProps {
   openapiPath: string
@@ -13,7 +12,7 @@ export class AwsOpenapiUi extends cdk.Construct {
     super(scope, id);
     const swaggerUiPath = __dirname + '/swagger-ui'
 
-    const swagger = swaggerUiPath + '/swagger.json'
+    const swagger = swaggerUiPath + '/openapi.yaml'
     packageOpenapi(props.openapiPath, swagger)
 
     const apiDocBucket = new s3.Bucket(this, `openapi`, {
