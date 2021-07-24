@@ -1,10 +1,12 @@
 import * as cdk from '@aws-cdk/core'
 import * as s3 from '@aws-cdk/aws-s3'
 import * as s3deploy from '@aws-cdk/aws-s3-deployment'
-import { packageOpenapi } from './utils'
+import { copyFile } from './utils'
+import * as spec from './spec'
 
 export interface AwsOpenapiUiProps {
-  openapiPath: string
+  openapiPath: string,
+  servers?: string[]
 }
 
 export class AwsOpenapiUi extends cdk.Construct {
@@ -12,8 +14,12 @@ export class AwsOpenapiUi extends cdk.Construct {
     super(scope, id);
     const swaggerUiPath = __dirname + '/swagger-ui'
 
-    const swagger = swaggerUiPath + '/openapi.yaml'
-    packageOpenapi(props.openapiPath, swagger)
+    const specPath = swaggerUiPath + '/openapi.yaml'
+
+    copyFile(props.openapiPath, specPath)
+    if (props.servers) {
+      spec.save(spec.addServerToSpec(props.openapiPath, props.servers), specPath)
+    }
 
     const apiDocBucket = new s3.Bucket(this, `openapi`, {
       websiteIndexDocument: 'index.html',
