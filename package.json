@@ -1,6 +1,12 @@
 {
   "name": "aws-openapi-ui",
   "version": "0.1.0",
+  "description": "cdk construct for adding a swagger ui interface to your api",
+  "license": "MIT",
+  "author": {
+    "name": "Josua Blejeru",
+    "url": "https://github.com/josuablejeru"
+  },
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
