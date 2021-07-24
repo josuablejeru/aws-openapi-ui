@@ -5,16 +5,20 @@
   "types": "dist/index.d.ts",
   "scripts": {
     "build": "webpack",
-    "watch": "tsc -w"
+    "watch": "tsc -w",
+    "test": "jest"
   },
   "devDependencies": {
     "@aws-cdk/assert": "1.108.0",
-    "@types/jest": "^26.0.10",
+    "@types/jest": "^26.0.24",
+    "@types/js-yaml": "^4.0.2",
     "@types/jszip": "^3.4.1",
     "@types/node": "10.17.27",
     "@types/swagger-ui": "^3.47.1",
     "copy-webpack-plugin": "^9.0.1",
+    "jest": "^27.0.6",
     "node-polyfill-webpack-plugin": "^1.1.4",
+    "ts-jest": "^27.0.4",
     "ts-loader": "^9.2.3",
     "typescript": "~3.9.7",
     "webpack": "^5.45.1",
@@ -28,7 +32,7 @@
     "@aws-cdk/aws-s3": "1.108.0",
     "@aws-cdk/aws-s3-deployment": "1.108.0",
     "@aws-cdk/core": "1.108.0",
-    "jszip": "^3.6.0"
+    "js-yaml": "^4.1.0"
   },
   "files": [
     "dist"
