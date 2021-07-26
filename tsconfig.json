@@ -28,6 +28,7 @@
   "exclude": [
     "node_modules",
     "cdk.out",
-    "swagger-ui"
+    "swagger-ui",
+    "tests"
   ]
 }
